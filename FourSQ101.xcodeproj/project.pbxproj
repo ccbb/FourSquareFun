@@ -125,13 +125,11 @@
 		A753CA581C5F6665007CF5F2 /* FourSQ101 */ = {
 			isa = PBXGroup;
 			children = (
+				A7E1023D1C6005B30043645D /* Controllers */,
+				A753CA8C1C5F68ED007CF5F2 /* Model */,
 				A753CA591C5F6665007CF5F2 /* AppDelegate.swift */,
-				A753CA5B1C5F6665007CF5F2 /* ViewController.swift */,
-				A753CA5D1C5F6665007CF5F2 /* Main.storyboard */,
-				A753CA601C5F6665007CF5F2 /* Assets.xcassets */,
-				A753CA621C5F6665007CF5F2 /* LaunchScreen.storyboard */,
-				A753CA651C5F6665007CF5F2 /* Info.plist */,
 				A753CA8F1C5F9913007CF5F2 /* QueryManager.swift */,
+				A7E1023E1C6005C70043645D /* Resources */,
 			);
 			path = FourSQ101;
 			sourceTree = "<group>";
@@ -152,6 +150,33 @@
 				A753CA7B1C5F6665007CF5F2 /* Info.plist */,
 			);
 			path = FourSQ101UITests;
+			sourceTree = "<group>";
+		};
+		A753CA8C1C5F68ED007CF5F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A753CA8A1C5F68E8007CF5F2 /* Venue.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A7E1023D1C6005B30043645D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A753CA5B1C5F6665007CF5F2 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A7E1023E1C6005C70043645D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A753CA601C5F6665007CF5F2 /* Assets.xcassets */,
+				A753CA5D1C5F6665007CF5F2 /* Main.storyboard */,
+				A753CA621C5F6665007CF5F2 /* LaunchScreen.storyboard */,
+				A753CA651C5F6665007CF5F2 /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +250,7 @@
 				TargetAttributes = {
 					A753CA551C5F6665007CF5F2 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = PT7Y4WHK5W;
 					};
 					A753CA691C5F6665007CF5F2 = {
 						CreatedOnToolsVersion = 7.2;
@@ -480,6 +506,7 @@
 			baseConfigurationReference = BE8A9C11C3C54076B68D0866 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FourSQ101/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bc.FourSQ101;
@@ -492,6 +519,7 @@
 			baseConfigurationReference = DB9B86FBBCA41C4791F715CE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FourSQ101/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bc.FourSQ101;
