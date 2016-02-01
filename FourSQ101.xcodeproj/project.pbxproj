@@ -15,6 +15,7 @@
 		A753CA641C5F6665007CF5F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A753CA621C5F6665007CF5F2 /* LaunchScreen.storyboard */; };
 		A753CA6F1C5F6665007CF5F2 /* FourSQ101Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA6E1C5F6665007CF5F2 /* FourSQ101Tests.swift */; };
 		A753CA7A1C5F6665007CF5F2 /* FourSQ101UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA791C5F6665007CF5F2 /* FourSQ101UITests.swift */; };
+		A753CA8B1C5F68E8007CF5F2 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA8A1C5F68E8007CF5F2 /* Venue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A753CA751C5F6665007CF5F2 /* FourSQ101UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FourSQ101UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A753CA791C5F6665007CF5F2 /* FourSQ101UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSQ101UITests.swift; sourceTree = "<group>"; };
 		A753CA7B1C5F6665007CF5F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A753CA8A1C5F68E8007CF5F2 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		BE8A9C11C3C54076B68D0866 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9B86FBBCA41C4791F715CE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A753CA5C1C5F6665007CF5F2 /* ViewController.swift in Sources */,
+				A753CA8B1C5F68E8007CF5F2 /* Venue.swift in Sources */,
 				A753CA5A1C5F6665007CF5F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
