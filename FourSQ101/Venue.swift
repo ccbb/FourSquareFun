@@ -24,6 +24,11 @@ class Venue {
         case Location = "location"
         case Name     = "name"
     }
+    
+    let name:     String?
+    let address:  String?
+    let city:     String?
+    let distance: Int?
 
     // Computed property utility that formats the location info.
     var formattedAddress: String {
@@ -31,11 +36,6 @@ class Venue {
             return address! + ", " + city! + "distance: " + String(distance!) + "m"
         }
     }
-    
-    var name:     String?
-    var address:  String?
-    var city:     String?
-    var distance: Int?
 
     required init(json: JSON) {
         name     = json[VenueFields.Name.rawValue].stringValue

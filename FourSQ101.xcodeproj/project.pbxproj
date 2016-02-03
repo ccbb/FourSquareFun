@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9874D243BEF936A28ACF35F9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1B06EA6D0C47FA23292471 /* Pods.framework */; };
+		A70459ED1C60AE43002BC23F /* VenuePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70459EC1C60AE43002BC23F /* VenuePresenter.swift */; };
 		A753CA5A1C5F6665007CF5F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA591C5F6665007CF5F2 /* AppDelegate.swift */; };
-		A753CA5C1C5F6665007CF5F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA5B1C5F6665007CF5F2 /* ViewController.swift */; };
+		A753CA5C1C5F6665007CF5F2 /* VenueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753CA5B1C5F6665007CF5F2 /* VenueController.swift */; };
 		A753CA5F1C5F6665007CF5F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A753CA5D1C5F6665007CF5F2 /* Main.storyboard */; };
 		A753CA611C5F6665007CF5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A753CA601C5F6665007CF5F2 /* Assets.xcassets */; };
 		A753CA641C5F6665007CF5F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A753CA621C5F6665007CF5F2 /* LaunchScreen.storyboard */; };
@@ -38,9 +39,10 @@
 
 /* Begin PBXFileReference section */
 		5B1B06EA6D0C47FA23292471 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70459EC1C60AE43002BC23F /* VenuePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePresenter.swift; sourceTree = "<group>"; };
 		A753CA561C5F6665007CF5F2 /* FourSQ101.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourSQ101.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A753CA591C5F6665007CF5F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A753CA5B1C5F6665007CF5F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A753CA5B1C5F6665007CF5F2 /* VenueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueController.swift; sourceTree = "<group>"; };
 		A753CA5E1C5F6665007CF5F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A753CA601C5F6665007CF5F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A753CA631C5F6665007CF5F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A70459EB1C60AE24002BC23F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A70459EC1C60AE43002BC23F /* VenuePresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
 		A753CA4D1C5F6665007CF5F2 = {
 			isa = PBXGroup;
 			children = (
@@ -125,8 +135,9 @@
 		A753CA581C5F6665007CF5F2 /* FourSQ101 */ = {
 			isa = PBXGroup;
 			children = (
-				A7E1023D1C6005B30043645D /* Controllers */,
 				A753CA8C1C5F68ED007CF5F2 /* Model */,
+				A70459EB1C60AE24002BC23F /* Presenter */,
+				A7E1023D1C6005B30043645D /* Controllers */,
 				A753CA591C5F6665007CF5F2 /* AppDelegate.swift */,
 				A753CA8F1C5F9913007CF5F2 /* QueryManager.swift */,
 				A7E1023E1C6005C70043645D /* Resources */,
@@ -163,7 +174,7 @@
 		A7E1023D1C6005B30043645D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A753CA5B1C5F6665007CF5F2 /* ViewController.swift */,
+				A753CA5B1C5F6665007CF5F2 /* VenueController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -363,7 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A753CA901C5F9913007CF5F2 /* QueryManager.swift in Sources */,
-				A753CA5C1C5F6665007CF5F2 /* ViewController.swift in Sources */,
+				A753CA5C1C5F6665007CF5F2 /* VenueController.swift in Sources */,
+				A70459ED1C60AE43002BC23F /* VenuePresenter.swift in Sources */,
 				A753CA8B1C5F68E8007CF5F2 /* Venue.swift in Sources */,
 				A753CA5A1C5F6665007CF5F2 /* AppDelegate.swift in Sources */,
 			);
