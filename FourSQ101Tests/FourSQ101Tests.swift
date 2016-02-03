@@ -36,6 +36,8 @@ class FourSQ101Tests: XCTestCase {
         }
     }
  
+    // MARK: - Table View DataSource methods
+
     func testConfigURL() {
         XCTAssertNotEqual(QueryManager.sharedInstance.url, "", "Error - url is not defined")
     }
@@ -51,14 +53,19 @@ class FourSQ101Tests: XCTestCase {
     func testRequestAuthentication() {
         let expectation = expectationWithDescription("Alamofire")
         
-        Alamofire.request(.GET, QueryManager.sharedInstance.url!, parameters: QueryManager.generalParameters() ).response {
-            request, response, data, error in
-            
+        do {
+            try Alamofire.request(.GET, QueryManager.sharedInstance.url!, parameters: QueryManager.generalParameters() ).response {
+                request, response, data, error in
+                
                 XCTAssertNil(error, "Whoops, error \(error)")
                 
                 XCTAssertEqual(response?.statusCode, 200, "Error - Status code not 200")
                 
                 expectation.fulfill()
+            }
+        }
+        catch {
+            XCTAssertTrue(false, "The test should not throw.")
         }
         
         waitForExpectationsWithTimeout(5.0, handler: nil)
