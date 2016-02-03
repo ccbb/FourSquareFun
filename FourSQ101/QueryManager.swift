@@ -29,9 +29,13 @@ enum Result<T> {
 
 enum RequestError: ErrorType {
     case InvalidResponse
-    case ParseError
-    case ParameterError
-    case ConfigurationError
+    case MissingURL
+}
+
+enum ParseError: ErrorType {
+    case MissingClientId
+    case MissingClientSecret
+    case MissingLocation
 }
 
 /**
@@ -108,23 +112,30 @@ class QueryManager: NSObject {
         return Singleton.instance
     }
     
-    override init() {
-        super.init()
-        
+    func setupLocationService() {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
+
     // MARK: - Four Square query methods
     
     /**
-    Method checks and creates the general paremeter list.
+    Method checks and creates the general parameter list.
+    
+    - throws:  The ParseError if any parameters are missing.
+    - returns: The formattet parameters.
     */
-    class func generalParameters() -> Dictionary<String,String>? {
-        guard let clientId     = QueryManager.sharedInstance.clientId,
-                  clientSecret = QueryManager.sharedInstance.clientSecret,
-                  ll           = QueryManager.sharedInstance.formattetCoordinate else {
-            return .None
+    class func generalParameters() throws -> Dictionary<String,String> {
+        guard let clientId = QueryManager.sharedInstance.clientId else {
+            throw ParseError.MissingClientId
+        }
+        
+        guard let clientSecret = QueryManager.sharedInstance.clientSecret else {
+            throw ParseError.MissingClientSecret
+        }
+        
+        guard let ll = QueryManager.sharedInstance.formattetCoordinate else {
+            throw ParseError.MissingLocation
         }
         
         return [
@@ -138,44 +149,56 @@ class QueryManager: NSObject {
     /**
      Method performs a query for venues throught the Four Square API.
      
-     :param: query is the new query string.
-     :param: completionHandler is the closure that is called upon error or completion.
+     - parameter query: is the new query string.
+     - parameter completionHandler: is the closure that is called upon error or completion.
      */
     class func getVenues(query: String, completionHandler: (Result<Array<Venue>>) -> Void) {
         
         // Check that we have an URL
         guard let url = QueryManager.sharedInstance.url else {
-            completionHandler(Result(RequestError.ConfigurationError))
+            completionHandler(Result(RequestError.MissingURL))
             return
         }
         
-        // Check that we have all the parameters we need
-        guard var parameters = generalParameters() else {
-            completionHandler(Result(RequestError.ParameterError))
-            return
+        do {
+            // Check that we have all the parameters we need
+            var parameters = try generalParameters()
+            
+            // Add the new query to the list of parameters
+            parameters["query"] = query
+            
+            Alamofire.request(.GET, url, parameters: parameters).responseJSON { (responseData) -> Void in
+                
+                // Check that we have an response
+                guard let responseValue = responseData.result.value else {
+                    completionHandler(Result(RequestError.InvalidResponse))
+                    return
+                }
+                
+                // Check that the response has the expected structure
+                guard let jsonResult = JSON(responseValue)["response"]["venues"].array  else {
+                    completionHandler(Result(RequestError.InvalidResponse))
+                    return
+                }
+                
+                // Convert the json to the Venue objects
+                let venues = jsonResult.map{ Venue(json: $0) }
+                
+                completionHandler(Result(venues))
+            }
+
         }
-        
-        // Add the new query to the list of parameters
-        parameters["query"] = query
-        
-        Alamofire.request(.GET, url, parameters: parameters).responseJSON { (responseData) -> Void in
-            
-            // Check that we have an response
-            guard let responseValue = responseData.result.value else {
-                completionHandler(Result(RequestError.InvalidResponse))
-                return
-            }
-            
-            // Check that the response has the expected structure
-            guard let jsonResult = JSON(responseValue)["response"]["venues"].array  else {
-                completionHandler(Result(RequestError.ParseError))
-                return
-            }
-            
-            // Convert the json to the Venue objects
-            let venues = jsonResult.map{ Venue(json: $0) }
-            
-            completionHandler(Result(venues))
+        catch ParseError.MissingClientId {
+            completionHandler(Result(ParseError.MissingClientId))
+        }
+        catch ParseError.MissingClientSecret {
+            completionHandler(Result(ParseError.MissingClientSecret))
+        }
+        catch ParseError.MissingLocation {
+            completionHandler(Result(ParseError.MissingLocation))
+        }
+        catch {
+            print("Something else wrong!")
         }
     }
 }
